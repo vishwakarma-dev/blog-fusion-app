@@ -1,0 +1,51 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "NextJS - Server",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "npm run dev"
+        },
+        {
+        "name": "NextJS : Client",
+        "type": "msedge",
+        "request": "launch",
+        "url": "http://localhost:3000"
+        },
+        {
+            "name": "Next.js: debug full stack",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}\\next-blog.client\\node_modules\\.bin\\next",
+            "args": ["next", "dev"],
+            "runtimeArgs": ["--inspect"],
+            "skipFiles": ["<node_internals>/**"],
+            "serverReadyAction": {
+              "action": "debugWithEdge", // or debugWithChrome
+              "killOnServerStop": true,
+              "pattern": "- Local:.+(https?://.+)",
+              "uriFormat": "%s",
+              "webRoot": "${workspaceFolder}"
+            }
+        },
+        {
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "name": "Nodemon",
+            "program": "${workspaceFolder}\\next-blog.server\\index.js",
+            "request": "launch",
+            "restart": true,
+            "envFile": "${workspaceFolder}\\next-blog.server\\.env",
+            "runtimeExecutable": "nodemon",
+            "skipFiles": [
+                "<node_internals>/**",
+                "${workspaceFolder}\\next-blog.server\\node_modules/**/*.js" 
+            ],
+            "type": "node"
+        },
+    ]
+}
